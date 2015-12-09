@@ -11,12 +11,12 @@
     
     
     <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" />
+    <link rel="shortcut icon" href="../static/img/favicon.ico" />
     
     <!-- CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../static/css/style.css" rel="stylesheet" />
     
     <!-- Google Fonts -->
     <link href='http://fonts.useso.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
@@ -666,10 +666,10 @@
     <!-- End: Main Content -->
     
     <!-- Javascript Files -->
-    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/jquery.pagination.js"></script>
-	<script type="text/javascript" src="js/jquery.knob.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../static/js/jquery.pagination.js"></script>
+	<script type="text/javascript" src="../static/js/jquery.knob.min.js"></script>
+    <script type="text/javascript" src="../static/js/main.js"></script>
 </body>
 </html>
