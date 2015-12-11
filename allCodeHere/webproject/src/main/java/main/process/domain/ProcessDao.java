@@ -24,7 +24,7 @@ public class ProcessDao implements ProcessService {
 		
 		try {
 			jdbcUtils.getConnection();
-			String sql = "select * from user where name = ? and password = ?";
+			String sql = "select * from userinfo where username = ? and password = ?";
 			Map<String, Object> map = jdbcUtils.findSimpleResult(sql, params);
 			flag = !map.isEmpty()?true:false;			
 			 

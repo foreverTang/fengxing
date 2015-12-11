@@ -148,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="main_box">
 			<div class="login_box">
 				<div class="login_logo">
-					<font size="6"><em><strong>opnestack平台流量监控系统</strong></em></font>
+					<font size="6"><em><strong>openstack平台流量监控系统</strong></em></font>
 				</div>
 				<br/>
 				<div class="login_form">

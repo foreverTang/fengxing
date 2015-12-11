@@ -24,7 +24,7 @@
   <display-name></display-name>
   <servlet>
     <servlet-name>mainLoginAction</servlet-name>
-    <servlet-class>main.process.action.ProcessAction</servlet-class>
+    <servlet-class>main.login.action.LoginAction</servlet-class>
   </servlet> 
   <servlet-mapping>
     <servlet-name>mainLoginAction</servlet-name>

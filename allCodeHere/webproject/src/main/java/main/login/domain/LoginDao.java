@@ -4,11 +4,13 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import utils.jdbcHelper.JdbcUtils;
+import main.login.service.LoginService;
+
 //import javax.mail.Flags.Flag;
 
 
-import demo.com.jdbc.JdbcUtils;
-import demo.com.login.service.LoginService;
+
 
 public class LoginDao implements LoginService {
 
