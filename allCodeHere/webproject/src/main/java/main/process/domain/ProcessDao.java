@@ -27,7 +27,7 @@ public class ProcessDao implements ProcessService {
 			String sql = "select * from user where name = ? and password = ?";
 			Map<String, Object> map = jdbcUtils.findSimpleResult(sql, params);
 			flag = !map.isEmpty()?true:false;			
-			
+			 
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

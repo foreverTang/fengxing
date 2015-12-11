@@ -27,8 +27,7 @@ public class ProcessAction extends HttpServlet {
 	 * Destruction of the servlet. <br>
 	 */
 	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
+		super.destroy(); 
 	}
 
 	/**
@@ -65,21 +64,24 @@ public class ProcessAction extends HttpServlet {
 		
 		String path = request.getContextPath();
 		String username = request.getParameter("username");
-		String pswd = request.getParameter("pswd");
+		String pswd = request.getParameter("password");
 		
 		List<Object> params = new ArrayList<Object>();
 		params.add(username);
 		params.add(pswd);
 		//boolean flag = service.login(params);
-		boolean flag = true;
+		boolean flag = false;
 				
 		if (flag) {
 			
 			request.getSession().setAttribute("username", username);
-			response.sendRedirect(path+"/demo/main.jsp");
+			//response.sendRedirect(path+"/demo/main.jsp");
+			//TODO:执行main process里的方法
 		}else{
-						
-			response.sendRedirect(path+"/demo/index.jsp");
+            response.setHeader("Cache-Control", "no-store");  
+            response.setHeader("Pragma", "no-cache");  
+            response.setDateHeader("Expires", 0);  
+            response.getWriter().write("[{\"message\":\"用户名或密码错误!\"}]"); 
 		}
 		out.flush();
 		out.close();
