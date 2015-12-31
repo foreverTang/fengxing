@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<client>
+	<!-- 抓包数据 时间分割（在该时间点，抓包进程将抓的包写入新的文件）(以小时为单位：如默认值2,为早上2点) -->
+<timePoint>2</timePoint>
+<captureBasePath>/var/TcpDumpLog/</captureBasePath>
+	<!-- 客户端和服务器交互的时间间隔，以秒为单位。(如默认值5,是每5秒，客户端传一次数据给服务器) -->
+<timeInterval>5</timeInterval>
+<serverInfo>
+	<ipAddress>10.82.82.69</ipAddress>
+	<port>26262</port>
+</serverInfo>
+<taskList>
+	<!-- 抓包流量信息 -->
+	<task>
+		<taskNum>1</taskNum>
+		<taskName>flowCount</taskName>
+		<taskclass>zju.cst.cloud.cpc.FlowCountTask</taskclass>
+	</task>
+	<!-- 主机资源数据 -->
+	<!-- 
+		<task>
+			<taskNum>2</taskNum>
+			<taskName>hostResource</taskName>
+			<taskclass>zju.cst.cloud.cpc.HostResource</taskclass>
+		</task>
+	 -->
+	<!-- 抓包解析数据 -->
+	<!-- 
+		<task>
+			<taskNum>3</taskNum>
+			<taskName>flowAnalyse</taskName>
+			<taskclass>zju.cst.cloud.cpc.FlowAnalyse</taskclass>
+		</task>
+	 -->
+</taskList>
+</client>
