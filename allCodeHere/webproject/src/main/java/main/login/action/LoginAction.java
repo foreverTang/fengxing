@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import main.login.domain.LoginDao;
 import main.login.service.LoginService;
+import main.process.action.ProcessAction;
 
 public class LoginAction extends HttpServlet {
 
@@ -69,14 +70,15 @@ public class LoginAction extends HttpServlet {
 		List<Object> params = new ArrayList<Object>();
 		params.add(username);
 		params.add(pswd);
-		boolean flag = service.login(params);
-		//boolean flag = false;
+		//boolean flag = service.login(params);
+		boolean flag = true;
 				
 		if (flag) {
 			
 			request.getSession().setAttribute("username", username);
 			//response.sendRedirect(path+"/demo/main.jsp");
 			//TODO:执行main process里的方法
+			new ProcessAction().doPost(request, response);
 		}else{
             response.setHeader("Cache-Control", "no-store");  
             response.setHeader("Pragma", "no-cache");  

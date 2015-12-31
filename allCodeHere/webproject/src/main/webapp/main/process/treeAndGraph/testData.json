@@ -6,43 +6,36 @@
         },
         {
             "id": 2,
-            "name": "R1",
-            "parent": 1
+            "name": "R1"
+        
         },
         {
             "id": 3,
-            "name": "R2",
-            "parent": 1
+            "name": "R2"
         },
         {
             "id": 4,
-            "name": "R3",
-            "parent": 1
+            "name": "R3"
         },
         {
             "id": 5,
-            "name": "R4",
-            "parent": 1
+            "name": "R4"
         },
         {
             "id": 6,
-            "name": "PC1",
-            "parent": 2
+            "name": "PC1"
         },
         {
             "id": 7,
-            "name": "PC2",
-            "parent": 2
+            "name": "PC2"
         },
         {
             "id": 8,
-            "name": "PC3",
-            "parent": 2
+            "name": "PC3"
         },
         {
             "id": 9,
-            "name": "PC4",
-            "parent": 2
+            "name": "PC4"
         }
     ],
     "relations": [

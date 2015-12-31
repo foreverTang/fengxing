@@ -27,7 +27,7 @@ public class LoginDao implements LoginService {
 		try {
 			jdbcUtils.getConnection();
 			String sql = "select * from user where name = ? and password = ?";
-			Map<String, Object> map = jdbcUtils.findSimpleResult(sql, params);
+			Map<String, Object> map = (Map<String, Object>) jdbcUtils.findSimpleResult(sql, params);
 			flag = !map.isEmpty()?true:false;			
 			
 		} catch (Exception e) {

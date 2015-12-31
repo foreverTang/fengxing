@@ -142,6 +142,9 @@ function initDatas(){
         var map = {};
         graph.graphModel.forEachByBreadthFirst(function(d){
             var name = d.name || d.type;
+            if(name=="Edge"){
+            	name = d.from.name+"--"+d.to.name;
+            }
             var data = {text: name, id: d.id, iconCls: getTreeIcon(d)};
             map[d.id] = data;
             var parent = d.parent;
@@ -202,7 +205,7 @@ function syncSelectionTreeAndGraph(treeId, graph){
         var selection = [];
         graph.selectionModel.forEach(function(node){
             var node = $(treeId).tree('find', node.id);
-            if(node){
+            if(node){//alert(node.text);
                 selection.push(node.target);
             }
         });
@@ -249,16 +252,47 @@ function initTopology(topoNodes,topoRelations)
             }
         }
     }
+    
+    var relationsArray=new Array(topoRelations.length);
+    //var k0 =0;
+    //var k1 =12;
+    //var k2 =5;
     for(var i=0;i<topoRelations.length;i++)
     {
         var relation = topoRelations[i];
         var nodeFrom = map[relation.from];
         var nodeTo = map[relation.to];
         if(nodeFrom && nodeTo){
-            var edge = graph.createEdge(nodeFrom, nodeTo);
-            edge.info = relation;
-			edge.name = "name";
-			edge.tooltip = "tooltip";
+            //var edge = graph.createEdge(nodeFrom, nodeTo);
+            //edge.info = relation;
+            //edge.tooltip = "tooltip";
+            //var k =0;
+            //window.setInterval(function(){edge.name = k+"",k++},1000);  	 
+        	var edge = graph.createEdge(nodeFrom, nodeTo);
+        	relationsArray[i] = edge;
+        	relationsArray[i].info = relation;
+        	relationsArray[i].tooltip = "tooltip";
+        	relationsArray[i].name = "";              
         }
     }
+    window.setInterval(
+    		function(){
+    			 Q.loadJSON("testData.json", function(json){  	
+    				 	if(topoNodes.length!=json.nodes.length||topoRelations.length!=json.relations.length){
+    				 		self.location.reload(); 
+    				 		return;
+    				 	}
+    			        var relations = json.relations;  
+    			        for(var i=0;i<relations.length;i++)
+    			        {
+    			            var relation = relations[i];
+    			            var name = relation.name;
+    			            relationsArray[i].name = name;
+    			        }
+    			 });
+    		},5000
+    );
+    //if(0<topoRelations.length)window.setInterval(function(){relationsArray[0].name = "0---"+k0,k0++},1000);
+    //if(1<topoRelations.length)window.setInterval(function(){relationsArray[1].name = "1---"+k1,k1++},1000);
+    //if(2<topoRelations.length)window.setInterval(function(){relationsArray[2].name = "2---"+k2,k2++},1000);
 }

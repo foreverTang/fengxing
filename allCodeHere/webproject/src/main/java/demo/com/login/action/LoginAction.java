@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.process.action.ProcessAction;
 import demo.com.login.domain.LoginDao;
 import demo.com.login.service.LoginService;
 
@@ -73,13 +74,12 @@ public class LoginAction extends HttpServlet {
 		//boolean flag = service.login(params);
 		boolean flag = true;
 				
-		if (flag) {
-			
+		if (flag) {		
 			request.getSession().setAttribute("username", username);
 			response.sendRedirect(path+"/demo/main.jsp");
 		}else{
 						
-			response.sendRedirect(path+"/demo/index.jsp");
+			response.sendRedirect(path+"/main/login/index.jsp");
 		}
 		out.flush();
 		out.close();

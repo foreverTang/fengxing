@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Qunee + EasyUI 同步示例</title>
+    <title>Qunee + EasyUI</title>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js?v=1.3"></script>
     <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
@@ -114,7 +114,7 @@
     <h3 style="border-bottom:1px solid #ddd;padding:0 0 3px 5px;margin-top: 0px;">拓扑视图</h3>
     <ul id="tree" class="easyui-tree"></ul>
 </div>
-<div data-options="region:'north'" border="false" style="height:60px;"><h3 style="text-align: center;">Qunee + EasyUI 同步示例</h3></div>
+<div data-options="region:'north'" border="false" style="height:60px;"><h3 style="text-align: center;">Qunee + EasyUI</h3></div>
 <!--<div data-options="region:'east',split:true,collapsed:true,title:'East'" style="width:100px;padding:10px;">east region</div>-->
 <div id="center_panel" data-options="region:'center'" style="padding-right: 10px;">
     <div class="easyui-tabs" data-options="fit:true,border:false,plain:true">
@@ -128,6 +128,6 @@
         
     </div>
 </div>
-<div id="footer" data-options="region:'south',border:false">Copyright © 2014 </div>
+<div id="footer" data-options="region:'south',border:false">Copyright Â© 2014 </div>
 </body>
 </html>

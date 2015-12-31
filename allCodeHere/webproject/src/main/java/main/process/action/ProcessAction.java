@@ -1,9 +1,18 @@
 package main.process.action;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +31,15 @@ public class ProcessAction extends HttpServlet {
 	public ProcessAction() {
 		super();
 	}
-
+	/**
+	 * Initialization of the servlet. <br>
+	 *
+	 * @throws ServletException if an error occurs
+	 */
+	public void init() throws ServletException {
+		// Put your code here
+		service = new ProcessService();
+	}
 	/**
 	 * Destruction of the servlet. <br>
 	 */
@@ -43,7 +60,6 @@ public class ProcessAction extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		this.doPost(request, response);
-		
 	}
 
 	/**
@@ -58,43 +74,8 @@ public class ProcessAction extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
-		
-		String path = request.getContextPath();
-		String username = request.getParameter("username");
-		String pswd = request.getParameter("password");
-		
-		List<Object> params = new ArrayList<Object>();
-		params.add(username);
-		params.add(pswd);
-		//boolean flag = service.login(params);
-		boolean flag = false;
-				
-		if (flag) {
-			
-			request.getSession().setAttribute("username", username);
-			//response.sendRedirect(path+"/demo/main.jsp");
-			//TODO:执行main process里的方法
-		}else{
-            response.setHeader("Cache-Control", "no-store");  
-            response.setHeader("Pragma", "no-cache");  
-            response.setDateHeader("Expires", 0);  
-            response.getWriter().write("[{\"message\":\"用户名或密码错误!\"}]"); 
-		}
-		out.flush();
-		out.close();
+		//定时修改testData.json里的数据
+		new ProcessService().changeJsonFile();
 	}
-
-	/**
-	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occurs
-	 */
-	public void init() throws ServletException {
-		// Put your code here
-		service = new ProcessDao();
-	}
-
+		
 }

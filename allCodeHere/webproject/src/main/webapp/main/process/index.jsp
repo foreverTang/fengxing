@@ -49,6 +49,11 @@
             </div>
         </section>
         <!-- End: Home -->
+        
+        
+        <div id="graph">
+			<Iframe src="treeAndGraph/treeAndGraph.jsp" id="test" width="100%" height="100%" scrolling="no" frameborder="10"></iframe>
+		</div>
 		
 		<!-- Start: Content -->
         <section class="content-section">

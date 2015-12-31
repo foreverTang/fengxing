@@ -4,13 +4,13 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+
 //import javax.mail.Flags.Flag;
 import main.process.service.ProcessService;
 import main.process.service.ProcessService;
-
 import utils.jdbcHelper.JdbcUtils;
 
-public class ProcessDao implements ProcessService {
+public class ProcessDao extends ProcessService {
 
 	private JdbcUtils jdbcUtils;
 	public ProcessDao() {
@@ -25,7 +25,7 @@ public class ProcessDao implements ProcessService {
 		try {
 			jdbcUtils.getConnection();
 			String sql = "select * from userinfo where username = ? and password = ?";
-			Map<String, Object> map = jdbcUtils.findSimpleResult(sql, params);
+			Map<String, Object> map = (Map<String, Object>) jdbcUtils.findSimpleResult(sql, params);
 			flag = !map.isEmpty()?true:false;			
 			 
 		} catch (Exception e) {

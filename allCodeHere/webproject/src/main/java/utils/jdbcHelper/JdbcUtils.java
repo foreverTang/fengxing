@@ -122,9 +122,10 @@ public class JdbcUtils {
 	 * @return
 	 * @throws SQLException
 	 */
-	public  Map<String, Object> findSimpleResult(String sql, List<Object> params)
+	public  List<Map<String, Object>> findSimpleResult(String sql, List<Object> params)
 			throws SQLException {
-		Map<String, Object> map = new HashMap<String, Object>();
+		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
+		Map<String, Object> paramMap = new HashMap<String, Object>();
 		pstmt = connection.prepareStatement(sql);
 		int index = 1;
 		if (params != null && !params.isEmpty()) {
@@ -138,18 +139,46 @@ public class JdbcUtils {
 		int cols_len = metaData.getColumnCount(); // 获得列的总数
 
 		while (resultSet.next()) {
+			paramMap = new HashMap<String, Object>();
 			for (int i = 0; i < cols_len; i++) {
 				String col_name = metaData.getColumnName(i + 1); // 获得第i列的字段名称
 				Object col_value = resultSet.getObject(col_name);// 返回 第i列的内容值
 				if (col_value == null) {
 					col_value = "";
 				}
-				map.put(col_name, col_value);
+				paramMap.put(col_name, col_value);
 			}
+			list.add(paramMap);
 
 		}
 
-		return map;
+		return list;
+	}
+	/**
+	 * 查询返回count(select count(*) from ......)
+	 * @param sql
+	 * @param params
+	 * @return
+	 * @throws SQLException
+	 */
+	public int getCount(String sql, List<Object> params)
+			throws SQLException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		pstmt = connection.prepareStatement(sql);
+		int index = 1;
+		if (params != null && !params.isEmpty()) {
+			for (int i = 0; i < params.size(); i++) {
+				pstmt.setObject(index++, params.get(i));
+			}
+		}
+		resultSet = pstmt.executeQuery(); // 返回查询结果
+
+		ResultSetMetaData metaData = pstmt.getMetaData(); // 获取 结果中，一行所有列的结果
+		int cols_len = metaData.getColumnCount(); // 获得列的总数
+        int count;
+		String col_name = metaData.getColumnName(1); // 获得第i列的字段名称
+		count = (int)resultSet.getObject(col_name);// 返回 第i列的内容值
+		return count;
 	}
 
 	/**
