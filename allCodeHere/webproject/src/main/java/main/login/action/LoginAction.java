@@ -78,7 +78,13 @@ public class LoginAction extends HttpServlet {
 			request.getSession().setAttribute("username", username);
 			//response.sendRedirect(path+"/demo/main.jsp");
 			//TODO:执行main process里的方法
-			new ProcessAction().doPost(request, response);
+			//response.sendRedirect(path+"/main/process/index.jsp");
+			
+			 response.setHeader("Cache-Control", "no-store");  
+	         response.setHeader("Pragma", "no-cache");  
+	         response.setDateHeader("Expires", 0);  
+	         response.getWriter().write("[{\"message\":\"success\"}]"); 
+			 new ProcessAction().doPost(request, response);
 		}else{
             response.setHeader("Cache-Control", "no-store");  
             response.setHeader("Pragma", "no-cache");  

@@ -142,7 +142,8 @@ public class JdbcUtils {
 			paramMap = new HashMap<String, Object>();
 			for (int i = 0; i < cols_len; i++) {
 				String col_name = metaData.getColumnName(i + 1); // 获得第i列的字段名称
-				Object col_value = resultSet.getObject(col_name);// 返回 第i列的内容值
+				Object col_value = resultSet.getObject(col_name);
+				// 返回 第i列的内容值
 				if (col_value == null) {
 					col_value = "";
 				}

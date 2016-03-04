@@ -75,7 +75,17 @@ public class ProcessAction extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//定时修改testData.json里的数据
-		new ProcessService().changeJsonFile();
+		//new ProcessService().changeJsonFile();
+		ProcessService processService = new ProcessService();	
+		
+		String path = request.getContextPath();
+		String computerName = request.getParameter("computerName");
+		if(computerName!=null&&!computerName.equals("")){
+			processService.changeJsonFile_2(computerName);
+		}else{
+			processService.changeJsonFile();
+		}
+		
 	}
 		
 }

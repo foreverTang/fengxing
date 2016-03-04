@@ -50,7 +50,21 @@ $(function(){
 
     //initToolbar();
     //initToolbox();
-    initDatas();
+    
+    
+    
+    
+    
+    var query = location.search.substring(1);
+    var values= query.split("%27");
+    var computerName = values[1];
+    
+    
+    
+    
+    
+    
+    initDatas(computerName);
 
 //监听面板调整大小事件，同步graph大小
     $('#center_panel').panel({
@@ -121,16 +135,16 @@ function initToolbox(){
         {name: '普通连线', value:Q.Consts.INTERACTION_MODE_CREATE_EDGE, icon:'images/edge_icon.png', action: setInteractionMode},
         {name: '正交直线', value:Q.Consts.INTERACTION_MODE_CREATE_EDGE, icon:'images/edge_orthogonal_icon.png', action: setInteractionMode, edgeType: Q.Consts.EDGE_TYPE_ORTHOGONAL_HORIZONTAL}]}, toolbox, graph,  "btn-group-vertical", false);
 
-    createDNDImage(toolbox, "images/node_icon.png", "终端", {type: "Node", label: "Mac", image: "Q.Graphs.node"});
+    createDNDImage(toolbox, "images/exchanger_icon.png", "终端", {type: "Node", label: "Mac", image: "Q.Graphs.node"});
     createDNDImage(toolbox, "images/exchanger_icon.png", "交换机", {type: "Node", label: "交换机", image: "Q.Graphs.exchanger2"});
     createDNDImage(toolbox, "images/server_icon.png", "服务器", {type: "Node", label: "服务器", image: "Q.Graphs.server"});
 }
 
-function initDatas(){
-    Q.loadJSON("testData.json", function(json){
+function initDatas(computerName){
+    Q.loadJSON("testData-"+computerName+".json", function(json){
         var topoNodes = json.nodes;
         var relations = json.relations;
-        initTopology(topoNodes,relations);
+        initTopology(topoNodes,relations,computerName);
 
         graph.callLater(function(){
             var layouter = new Q.TreeLayouter(graph);
@@ -206,10 +220,6 @@ function syncSelectionTreeAndGraph(treeId, graph){
         graph.selectionModel.forEach(function(node){
             var node = $(treeId).tree('find', node.id);
             if(node){//alert(node.text);
-            	/////////////////////////////////////////////////
-            	
-            	window.open("treeAndGraph-2.jsp?computerName='"+node.text+"'");
-            	//////////////////////////////////////////////////
                 selection.push(node.target);
             }
         });
@@ -233,7 +243,7 @@ function syncSelectionTreeAndGraph(treeId, graph){
     }});
 }
 
-function initTopology(topoNodes,topoRelations)
+function initTopology(topoNodes,topoRelations,computerName)
 {
     var map = {};
     for(var i=0;i<topoNodes.length;i++)
@@ -281,7 +291,7 @@ function initTopology(topoNodes,topoRelations)
     }
     window.setInterval(
     		function(){
-    			 Q.loadJSON("testData.json", function(json){  	
+    			 Q.loadJSON("testData-"+computerName+".json", function(json){	
     				 	if(topoNodes.length!=json.nodes.length||topoRelations.length!=json.relations.length){
     				 		self.location.reload(); 
     				 		return;

@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/WEB-INF/web.xml=UTF-8
 encoding//src/main/webapp/main/login/index.jsp=UTF-8
+encoding//src/main/webapp/main/process/componentlevel.jsp=UTF-8
+encoding//src/main/webapp/main/process/hostlevel.jsp=UTF-8
 encoding//src/main/webapp/main/process/index.jsp=UTF-8
+encoding//src/main/webapp/main/process/treeAndGraph/treeAndGraph.jsp=UTF-8

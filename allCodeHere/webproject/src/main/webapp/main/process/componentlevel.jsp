@@ -37,7 +37,7 @@
         
         
         <div id="graph">
-			<Iframe src="treeAndGraph/treeAndGraph.jsp" id="test" width="80%" height="80%" scrolling="no" frameborder="10" style="display:block;margin:0 auto;"></iframe>
+			<Iframe src="treeAndGraph/treeAndGraph-2.jsp" id="test" width="80%" height="80%" scrolling="no" frameborder="10" style="display:block;margin:0 auto;"></iframe>
 		</div>
 		
 		<!-- Start: Content -->
