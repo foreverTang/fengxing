@@ -1,3 +1,9 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,14 +113,42 @@
             background-position:center;
         }
     </style>
-    <script src="framework.js"></script>
+    <script type="text/javascript">	
+    $(function(){
+    	var query = location.search.substring(1);
+    	var values= query.split("%27");
+    	var computerName = values[1];
+    	var targetForm = document.forms[ "form1" ];
+    	
+    	
+    	
+    	
+    	$.ajax({
+            type: "POST",
+            url: "<%=path%>/main/process/Action?computerName="+computerName,
+            data: $("#form1").serialize(),
+            dataType: "json",
+            success: function(data){
+           	 if(data[0].message=="success"){
+           		 
+           	 }
+           	 show_err_msg(data[0].message);		            
+            },
+            error: function() {
+       	    
+            }
+        });
+    })
+    </script>
+    <script src="framework-2.js"></script>
 </head>
 <body class="easyui-layout">
+<form name="form1" method="post" action="" enctype="multipart/form-data">
 <div data-options="region:'west',split:true" border="false" style="width:0px;padding-left: 10px;">
     <h3 style="border-bottom:1px solid #ddd;padding:0 0 3px 5px;margin-top: 0px;">拓扑视图</h3>
     <ul id="tree" class="easyui-tree"></ul>
 </div>
-<div data-options="region:'north'" border="false" style="height:60px;"><h3 style="text-align: center;">主机间流量拓扑图</h3></div>
+<div data-options="region:'north'" border="false" style="height:60px;"><h3 style="text-align: center;">主机内组件流量拓扑图</h3></div>
 <!--<div data-options="region:'east',split:true,collapsed:true,title:'East'" style="width:100px;padding:10px;">east region</div>-->
 <div id="center_panel" data-options="region:'center'" style="padding-right: 10px;">
     <div class="easyui-tabs" data-options="fit:true,border:false,plain:true">

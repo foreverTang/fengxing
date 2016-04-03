@@ -69,6 +69,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		             data: $("#login_form").serialize(),
 		             dataType: "json",
 		             success: function(data){
+		            	 if(data[0].message=="success"){
+		            		 window.location.href = "<%=path%>/main/process/hostlevel.jsp";
+		            	 }
 		            	 show_err_msg(data[0].message);		            
 		             },
 	                 error: function() {
