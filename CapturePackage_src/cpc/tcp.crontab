@@ -1,0 +1,2 @@
+0 2 * * * echo "pwdRoot=`pwd` `date` Runing">>/var/TcpDumpLog/crontab.run.log;pwdRoot=`pwd`;sh $pwdRoot/tcpdump.sh
+* * * * * pwdRoot=`pwd`;/bin/bash $pwdRoot/cpuMemload.sh

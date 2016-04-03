@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+	<!-- 限制server监听的IP地址 -->
+	<!-- <serverAddList>
+		<address></address>
+	</serverAddList> 
+	-->
+	<!-- 监听的端口 -->
+	<serverPort>26262</serverPort>
+	<taskList>
+		<!-- 包流量信息解析 -->
+		<task>
+			<taskNum>1</taskNum>
+			<taskName>flowCount</taskName>
+			<taskClass>zju.cst.cloud.cpserver.FlowCountParse</taskClass>
+		</task>
+		<!-- 主机资源数据 -->
+		<task>
+			<taskNum>2</taskNum>
+			<taskName>CpuMemory</taskName>
+			<taskClass>zju.cst.cloud.cpserver.CpuMemParse</taskClass>
+		</task>
+		<!-- 抓包解析数据 -->
+		<!-- 
+			<task>
+				<taskNum>3</taskNum>
+				<taskName>flowAnalyse</taskName>
+				<taskclass>zju.cst.cloud.cpc.FlowAnalyse</taskclass>
+			</task>
+		 -->
+	</taskList>
+	<database>
+		<driver>com.mysql.jdbc.Driver</driver>
+		<url>jdbc:mysql://115.29.79.33:3306/fengxing?characterEncoding=utf8</url>
+		<user>cap</user>
+		<password>cap</password>
+	</database>
+</server>
